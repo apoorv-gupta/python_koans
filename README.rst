@@ -100,17 +100,22 @@ https://www.youtube.com/watch?v=e2WXgXEjbHY&list=PL5Up_u-XkWgNcunP_UrTJG_3EXgbK2
 
 Or if you prefer to read:
 
-From a \*nix terminal or Windows command prompt run::
-
-.. code-block:: sh
-
-    python contemplate_koans.py
-
-or:
+From a *nix terminal or Windows command prompt, run the full koan suite from
+the project root with:
 
 .. code-block:: sh
 
     python3 contemplate_koans.py
+
+To run a specific koan file, pass its filename. For example, to run only
+``koans/about_asserts.py``:
+
+.. code-block:: sh
+
+    python3 contemplate_koans.py about_asserts.py
+
+You can also use ``about_asserts`` without the ``.py`` suffix, or pass the
+relative path ``koans/about_asserts.py``.
 
 In my case I'm using Python 3 with Windows, so I fire up my command
 shell (cmd.exe) and run this:
