@@ -147,52 +147,24 @@ fire up the command line, recreate the scenario and run queries:
 
 .. image:: https://user-images.githubusercontent.com/2614930/28401750-f9dcb296-6cd0-11e7-98eb-c20318eada33.png
 
-Sniffer Support
----------------
+Run a koan automatically whenever its file changes
+---------------------------------------------------
 
-Sniffer allows you to run the tests continuously. If you modify any files files
-in the koans directory, it will rerun the tests.
-
-To set this up, you need to install sniffer:
+Install Watchdog with its command-line tools:
 
 .. code-block:: sh
 
-    python3 -m pip install sniffer
+    python3 -m pip install "watchdog[watchmedo]"
 
-You should also run one of these libraries depending on your system. This will
-automatically trigger sniffer when a file changes, otherwise sniffer will have
-to poll to see if the files have changed.
-
-On Linux:
+From the project root, start this watcher:
 
 .. code-block:: sh
 
-    python3 -m pip install pyinotify
+    watchmedo shell-command --patterns="**/about_*.py" --recursive --verbose --command='python3 -B contemplate_koans.py "${watch_src_path}"' koans
 
-On Windows:
-
-.. code-block:: sh
-
-    python3 -m pip install pywin32
-
-    Also available here:
-
-    https://github.com/mhammond/pywin32/releases
-
-On macOS:
-
-.. code-block:: sh
-
-    python3 -m pip install MacFSEvents
-
-Once it is set up, you just run:
-
-.. code-block:: sh
-
-    sniffer
-
-Just modify one of the koans files and you'll see that the tests are triggered
-automatically. Sniffer is controlled by ``scent.py``.
+It watches Python koan files named ``about_*.py`` and runs only the file that
+changed. Test output appears in the terminal running the watcher. Press
+``Ctrl+C`` in that terminal to stop it.
 
 Getting the Most From the Koans
 -------------------------------
